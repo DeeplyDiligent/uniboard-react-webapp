@@ -1,4 +1,4 @@
-import {React, Component}  from 'react';
+import React, { Component } from 'react';
 import {isMobile} from 'react-device-detect';
 
 
@@ -11,7 +11,7 @@ class Navbar extends Component {
         }
         
     }
-
+    
     expandNavbar = () => {
         this.newClass = this.state.expandedClass ==="hidden"?"block":"hidden";
         this.setState({expandedClass:this.newClass})
