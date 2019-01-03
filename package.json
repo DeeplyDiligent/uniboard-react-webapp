@@ -11,8 +11,7 @@
     "react-scripts": "2.1.2"
   },
   "scripts": {
-    "tailwind:css": "tailwind build src/css/tailwind.src.css -c  tailwind.js -o src/css/tailwind.css",
-    "start": "npm run tailwind:css && react-scripts start",
+    "start": "react-scripts start",
     "build": "npm run tailwind:css && react-scripts build"
   },
   "eslintConfig": {
