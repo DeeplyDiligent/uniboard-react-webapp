@@ -8,7 +8,9 @@ class Attachment extends Component {
           <i class="fas fa-file-pdf" />
           <div className="px-3 font-bold">Document Name.pdf</div>
           <div className="text-right"><i class="fas fa-cloud-download-alt"></i></div>
+
         </div>
+        <hr style={{borderWidth:'1px'}}/>
       </React.Fragment>
     );
   }

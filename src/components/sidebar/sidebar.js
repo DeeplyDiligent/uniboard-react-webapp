@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import Attachments from './attachments';
+import Attachments from './attachments/attachments';
+import TodoApp from './todoList/todoList'
 
 class Sidebar extends Component {
     state = {  }
@@ -15,6 +16,8 @@ class Sidebar extends Component {
                 <div class="bg-red-light brow my-4"></div>
                 <div class = "text-md text-grey">Week name and topic (if applicable)</div>
                 <Attachments />
+                <hr/>
+                <TodoApp/>
             </div>
         );
     }
