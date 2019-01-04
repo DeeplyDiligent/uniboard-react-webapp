@@ -1,18 +1,20 @@
 import React, { Component } from 'react';
 class WeekCard extends Component {
     render() { 
-        return ( 
-            <div className="py-2 max-w-md w-full lg:flex">
-                <div className="min-w-full border-r border-b lgborder-l border-grey-light lg:border-t lg:border-grey-light bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
-                    <div className="text-black font-bold text-xl">Week X</div>
-                    <p className="py-5 text-grey-darker text-base">Week Preview...</p>
-                    <div style={{width:"fit-content",marginLeft:"auto",marginRight:"0px"}} className="content-end">
+         return (
+             <div style={{width: "400px", height: "130px"}} 
+             className="flex border-2 rounded border-light-grey p-4 m-4">
+                 <div>
+                 <div style={{width: "40px", height:"4px"}} className="bg-red-light mb-1"></div>
+            
+                 <div className="text-black font-semibold text-lg">Week X</div>
+                 </div>
+                 <div style={{width:"fit-content",marginLeft:"auto",marginRight:"0px"}} className="self-end">
                         <span className="inline-block bg-grey-lighter rounded-full px-3 py-1 text-sm font-semibold text-grey-darker mr-2">3/10 Tasks</span>
                         <span className="inline-block bg-grey-lighter rounded-full px-3 py-1 text-sm font-semibold text-grey-darker mr-2">85%</span>
-                    </div>
                 </div>
-            </div>
-         );
+             </div>
+         )
     }
 }
  

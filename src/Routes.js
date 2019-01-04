@@ -6,6 +6,7 @@ import Navbar from './components/nav/navbar'
 import About from './components/about';
 import Contact from './components/contact';
 import Home from './components/home';
+import Sidebar from './components/sidebar/sidebar';
 
 
 class App extends Component {
@@ -13,6 +14,7 @@ class App extends Component {
     return (
       <Router>
       <div className="App">
+        <Route path="/home/sidebar/:id"  render={(props) => <Sidebar {...props} />} />
         <Navbar />
         <div className="">
           <Route path="/home" component={Home} />
