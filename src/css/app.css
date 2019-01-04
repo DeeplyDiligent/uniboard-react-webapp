@@ -1,3 +1,8 @@
 html {
     font-family: 'Helvetica';
 }
+
+.brow {
+    width: 40px;
+    height: 4px;
+}
