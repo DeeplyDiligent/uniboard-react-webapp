@@ -8,6 +8,7 @@ class Sidebar extends Component {
         return (
             <div className="absolute bg-white max-w-sm rounded overflow-hidden shadow-lg px-4 py-4" style={styles.sidebar}>
                 <div className="text">{this.props.match.params.id}</div>
+                <div class="bg-red-light mb-1 brow"></div>
                 <div className="text-black">UnitName</div>
             </div>
         );
