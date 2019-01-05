@@ -6,7 +6,7 @@ class Home extends Component {
     render() {
       return (
         <div>
-          <div className='searchBox	m-auto mt-4 ' style={{width:'fit-content'}} >
+          <div className='searchBox table	m-auto mt-4' >
         <Search />
         </div>
         <UnitBoards/>
