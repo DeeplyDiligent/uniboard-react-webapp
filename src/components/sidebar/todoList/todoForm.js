@@ -7,9 +7,7 @@ class TodoForm extends React.Component {
       this.onClickClose2 = this.onClickClose2.bind(this);
     }
    
-    componentDidMount() {
-      this.refs.itemName.focus();
-    }
+   
     onSubmit(event) {
       event.preventDefault();
       var newItemValue = this.refs.itemName.value;
@@ -28,9 +26,9 @@ class TodoForm extends React.Component {
   
       return (
           <div className='flex'>
-        <form ref="form" onSubmit={this.onSubmit} className="form-inline w-3/5">
+        <form ref="form" onSubmit={this.onSubmit} className="form-inline w-3/5 flex">
           <button type="submit" className="btn btn-default fa fa-plus-circle"></button> 
-          <input type="text" ref="itemName" className="form-control ml-3" placeholder="Add new task item..."/>
+          <input type="text" ref="itemName" className="form ml-3" placeholder="Add new task item..."/>
         </form>
         <button type="" className="btn btn-default w-2/5 text-white bg-black rounded-full" onClick={this.onClickClose2}>Clear Completed</button> 
         <hr style={{borderWidth:'1px'}}/>

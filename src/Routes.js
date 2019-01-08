@@ -7,17 +7,22 @@ import About from './components/about';
 import Contact from './components/contact';
 import Home from './components/home';
 import Sidebar from './components/sidebar/sidebar';
+import firebaseDB from './firebaseDB'
 
 
 class App extends Component {
+  
+
   render() {
+    this.db = new firebaseDB()
+    
     return (
       <Router>
       <div className="App">
         <Route path="/home/sidebar/:id"  render={(props) => <Sidebar {...props} />} />
         <Navbar />
         <div className="m-auto">
-          <Route path="/home" component={Home} />
+          <Route path="/home" component={Home} database={this.db.getDatabase(function(data){console.log(data)})} />
           <Route path="/about" component={About} />
           <Route path="/contact" component={Contact} />
         </div>

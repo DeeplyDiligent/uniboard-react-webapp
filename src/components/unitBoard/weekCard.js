@@ -1,9 +1,25 @@
 import React, { Component } from 'react';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+
 class WeekCard extends Component {
+
+constructor(){
+    super()
+    this.handleClick = this.handleClick.bind(this)
+}
+
+    handleClick(){
+    
+//this.context.history.push('/home/sidebar/kfc3241')
+ }
+
+
     render() { 
          return (
-             <div style={{width: "400px", height: "130px"}} 
-             className="flex border-2 rounded border-light-grey p-4 m-4">
+             <Link to='/home/sidebar/kfc3241' style={{textDecoration:'none'}}>
+             <div style={{width: "400px", height: "130px"}}  
+             className="flex border-2 rounded border-light-grey p-4 m-4"
+             >
                  <div>
                  <div className="brow bg-red-light mb-1"></div>
             
@@ -14,6 +30,7 @@ class WeekCard extends Component {
                         <span className="px-3 py-1 text-sm font-semibold text-grey">4/5</span>
                 </div>
              </div>
+             </Link>
          )
     }
 }
