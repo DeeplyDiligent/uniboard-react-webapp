@@ -30,6 +30,7 @@ class TodoList extends React.Component {
     render () {
       var todoStyle = this.props.item.done ? 
           {textDecoration : 'line-through' } : {textDecoration : 'none'};
+      todoStyle.wordBreak = "break-all";
       var todoIcon = this.props.item.done ? 
           'fa fa-check-circle' : 'far fa-circle';
       // var todoClass = this.props.item.done ? 

@@ -27,8 +27,8 @@ class TodoForm extends React.Component {
       return (
           <div className='flex'>
         <form ref="form" onSubmit={this.onSubmit} className="form-inline w-3/5 flex">
-          <button type="submit" className="btn btn-default fa fa-plus-circle"></button> 
-          <input type="text" ref="itemName" className="form ml-3" placeholder="Add new task item..."/>
+          <button type="submit" className="btn btn-default fa fa-plus-circle w-1/6"></button> 
+          <input type="text" ref="itemName" className="form pl-1 pr-1 w-5/6" placeholder="Add new task item..."/>
         </form>
         <button type="" className="btn btn-default w-2/5 text-white bg-black rounded-full" onClick={this.onClickClose2}>Clear Completed</button> 
         <hr style={{borderWidth:'1px'}}/>
