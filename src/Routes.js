@@ -9,6 +9,7 @@ import Contact from './components/contact';
 import Home from './components/home';
 import Sidebar from './components/sidebar/sidebar';
 import firebase from 'firebase';
+import SidebarSearch from './components/sidebar/sidebarSearch';
 
 
 class App extends Component {
@@ -52,6 +53,7 @@ class App extends Component {
         <Router>
         <div className="App">
           <Route path="/home/sidebar/:id"  render={(props) => <Sidebar {...props} />} />
+          <Route path="/home/search"  render={(props) => <SidebarSearch {...props} />} />
           <Navbar />
           <div className="mainComponent" >
             <Switch>

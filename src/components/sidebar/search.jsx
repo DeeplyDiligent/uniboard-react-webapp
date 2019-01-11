@@ -4,10 +4,10 @@ class Search extends Component {
   state = {};
   render() {
     return (
-      <div className="inline-flex rounded-full shadow-inner bg-grey-lighter p-4">
+      <div className="rounded-full shadow-inner bg-white sm:bg-grey-lightest p-4">
         <i className="fas fa-search mr-4" />
         <input
-          className="bg-grey-lighter"
+          className="bg-white lg:bg-grey-lightest"
           placeholder="Search Units, PDFs, Forums..."
           style={{width:"15rem"}}
         />
