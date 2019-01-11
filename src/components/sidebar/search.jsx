@@ -7,7 +7,7 @@ class Search extends Component {
       <div className="rounded-full shadow-inner bg-white sm:bg-grey-lightest p-4">
         <i className="fas fa-search mr-4" />
         <input
-          className="bg-white lg:bg-grey-lightest"
+          className="bg-white sm:bg-grey-lightest"
           placeholder="Search Units, PDFs, Forums..."
           style={{width:"15rem"}}
         />

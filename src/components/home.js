@@ -2,17 +2,24 @@ import React, { Component } from 'react';
 import UnitBoards from './unitBoard/unitBoards'
 import Search from './sidebar/search'
 import firebase from 'firebase';
-import {isMobileOnly} from 'react-device-detect';
+import {
+  BrowserView,
+  MobileView,
+  isBrowser,
+  isMobile
+} from "react-device-detect";
 
 
 class Home extends Component {
 
-
+componentDidUpdate(){
+  var displayString = isMobile ? 'none' : 'table'
+  return (displayString)
+}
     render() {
-      console.log(isMobileOnly)
       return (
         <div className='h-full bg-grey-lightest '>
-          <div className='searchBox	m-auto pt-4' style={{display: isMobileOnly ? 'none' : 'table'}} >
+          <div className='searchBox	m-auto pt-4' style={{display: this.componentDidUpdate()}} >
           <Search/>
           <div/>
           <div/>
