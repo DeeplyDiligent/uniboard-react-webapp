@@ -53,7 +53,7 @@ class App extends Component {
         <div className="App">
           <Route path="/home/sidebar/:id"  render={(props) => <Sidebar {...props} />} />
           <Navbar />
-          <div className="m-auto">
+          <div className="mainComponent" >
             <Switch>
               <Route path="/home" component={Home} />
             </Switch>

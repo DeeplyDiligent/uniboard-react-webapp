@@ -1,5 +1,34 @@
+@import url('https://fonts.googleapis.com/css?family=Arimo');
+
 html {
-    font-family: 'Raleway';
+    font-family: 'Arimo', sans-serif;
+    height: 100%
+}
+
+body{
+    height:100%
+}
+
+#root{
+    height:100%
+}
+
+.App{
+    height:100%
+}
+
+.mainComponent{
+    height: calc(100% - 64px);
+    margin: 0;
+    overflow: hidden;
+}
+
+.sidebarBackground{
+    background: #80808099;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 600;
 }
 
 .brow {

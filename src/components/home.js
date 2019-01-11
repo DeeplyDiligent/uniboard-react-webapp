@@ -8,8 +8,8 @@ class Home extends Component {
   
     render() {
       return (
-        <div>
-          <div className='searchBox table	m-auto mt-4' >
+        <div className='h-full bg-grey-lightest'>
+          <div className='searchBox table	m-auto pt-4' >
         <Search />
         </div>
         <UnitBoards />

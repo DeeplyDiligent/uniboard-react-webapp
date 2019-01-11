@@ -17,8 +17,8 @@ constructor(){
     render() { 
          return (
              <Link to='/home/sidebar/kfc3241' style={{textDecoration:'none'}}>
-             <div style={{width: "400px", height: "130px"}}  
-             className="flex border-2 rounded border-light-grey p-4 m-4"
+             <div style={{width: "100%", height: "99px"}}  
+             className="flex border-2 rounded border-light-grey p-4 my-2"
              >
                  <div>
                  <div className="brow bg-red-light mb-1"></div>
