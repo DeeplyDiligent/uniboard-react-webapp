@@ -12,9 +12,13 @@ class Sidebar extends Component {
         styles.sidebar = {right:0, zIndex:'1000', overflow:'scroll'}
         return (
             <div className="w-full h-full absolute" >
-               <Link to='/home'> <div className="sidebarBackground" style={{rgba:'(0,0,0,0)'}}></div></Link>
-                <div className="fixed bg-white max-w-sm rounded overflow-hidden shadow-lg px-8 py-4 sm:w-full lg:w-1/3 h-full" style={styles.sidebar}>
-                    <Link to='/home'><div className="text-right pb-2 text-3xl"><i className="fas fa-times"></i></div></Link>
+               <Link to='/home'> 
+               <div className="sidebarBackground h-full" style={{rgba:'(0,0,0,0)'}}></div></Link>
+                <div className="sidebarContent fixed bg-white max-w-sm rounded h-full shadow-lg px-8 py-4 sm:w-full lg:w-1/3 h-full" style={styles.sidebar}>
+                    <Link to='/home'>
+                    <div className="text-right pb-2 text-3xl">
+                    <i className="fas fa-times"></i></div>
+                    </Link>
                     <div className="text-2xl font-bold">Unit Name</div>
                     {/* <div className="text">{this.props.match.params.id}</div> */}
                     <div className="bg-red-light brow my-4"></div>
