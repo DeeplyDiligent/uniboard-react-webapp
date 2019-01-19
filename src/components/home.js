@@ -15,12 +15,13 @@ class Home extends Component {
   };
   constructor(props) {
     super(props);
-    var context = this;
-    this.props.db.get().then(function(doc) {
-      if (doc.exists) {
-        context.setState({ data: doc.data() });
-      }
-    });
+    this.props.db.get().then(this.storeData);
+  }
+
+  storeData = (doc) => {
+    if (doc.exists) {
+      this.setState({ data: doc.data() });
+    }
   }
 
   componentDidUpdate() {
