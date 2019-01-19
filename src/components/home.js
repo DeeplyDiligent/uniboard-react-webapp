@@ -13,29 +13,27 @@ import {
 class Home extends Component {
 
   state = { 
-    data : {},
+    data : '',
   }
-constructor(props){
-  super(props)
-  var context = this
-  this.props.db.get().then(function(doc) {
-    if (doc.exists) {
-        context.setState({data : doc.data()})
-        
-    }
-});
-}
+  constructor(props){
+    super(props)
+    var context = this;
+    this.props.db.get().then(function(doc) {
+      if (doc.exists) {
+          context.setState({data : doc.data()})
+      }
+    });
+  }
 
-componentDidUpdate(){
-  var displayString = isMobileOnly ? 'none' : 'table'
-  return (displayString)
-}
+  componentDidUpdate(){
+    var displayString = isMobileOnly ? 'none' : 'table'
+    return (displayString)
+  }
 
 
-    render() {
-     
-
+  render() {
     if (this.state.data){
+      console.log(this.state.data);
       return (
         <div className='h-full bg-grey-lightest '>
           <div className='searchBox	m-auto pt-4' style={{display: this.componentDidUpdate()}} >
@@ -43,7 +41,7 @@ componentDidUpdate(){
           <div/>
           <div/>
         </div>
-        <UnitBoards db={this.state.data}/>
+        <UnitBoards database={this.state.data}/>
         </div>
         
       );
@@ -56,6 +54,6 @@ componentDidUpdate(){
       )
     }
     }
-  }
+}
 
 export default Home;

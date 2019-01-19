@@ -28,10 +28,11 @@ class Sidebar extends Component {
 
         const styles = {}   
         styles.sidebar = {right:0, zIndex:'1000', overflow:'scroll'}
+        styles.sidebarBackground = {rgba:'(0,0,0,0)'}
         return (
             <div className="w-full h-full absolute" >
                <Link to='/home'> 
-                <div className="sidebarBackground h-full" style={{rgba:'(0,0,0,0)'}}></div>
+                <div className="sidebarBackground h-full" style={styles.sidebarBackground}></div>
                </Link>
                <Box pose={this.state.isVisible ? 'visible' : 'hidden'} className="sidebarContent fixed bg-white max-w-sm rounded h-full shadow-lg px-8 py-4 sm:w-full lg:w-1/3 h-full" style={styles.sidebar}>                    
                     <Link to='/home'>

@@ -4,16 +4,19 @@ import {isMobileOnly} from 'react-device-detect';
 
 
 class UnitBoards extends Component {
-
     constructor(props){
         super(props)
     }
-
   
-    render() { 
+    render() {
         return ( 
             <div className="jumbotron flex p-2 " style={{height: isMobileOnly ? 'calc(100% - 10px)' : 'calc(100% - 68px)', overflowX:"scroll", overflowY:"hidden"}}>
-            {Array(4).fill(1).map((i,j)=><UnitBoard key={j} number={j}/>)}
+            {Object.keys(this.props.database).map((i,j)=>{
+                if(i!='date'){
+                    return <UnitBoard key={j} database={this.props.database[i]} unitName={i} number={j}/>
+                }
+                return false;
+            })}
             <div>&nbsp;</div>
             </div>
          )
