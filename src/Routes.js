@@ -56,7 +56,7 @@ class App extends Component {
       return (
         <Router>
         <div className="App">
-          <Route path="/home/sidebar/:id"  render={(props) => <Sidebar db={this.userInfo} {...props} />} />
+          <Route path="/home/sidebar/:id/:branchid"  render={(props) => <Sidebar db={this.userInfo} {...props} />} />
           <Route path="/home/search"  render={(props) => <SidebarSearch db={this.userInfo} {...props} />} />
           <Navbar />
 
