@@ -17,19 +17,18 @@ class Sidebar extends Component {
     }
     render() {
         
-        //console.log(this.db.collection('dba').doc('eGlJZRO3Bv0h5OUOENIa'))
+        // console.log(this.db.collection('dba').doc('eGlJZRO3Bv0h5OUOENIa'))
         this.props.db.get().then(function(doc) {
             if (doc.exists) {
                 console.log("Document data:", doc.data());
             }
-        });
-
-        
+        });        
 
         const styles = {}   
         styles.sidebar = {right:0, zIndex:'1000', overflow:'scroll'}
         styles.sidebarBackground = {rgba:'(0,0,0,0)'}
         return (
+            
             <div className="w-full h-full absolute" >
                <Link to='/home'> 
                 <div className="sidebarBackground h-full" style={styles.sidebarBackground}></div>

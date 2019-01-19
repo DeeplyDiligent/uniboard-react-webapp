@@ -17,7 +17,7 @@ class RegisterUser extends Component {
         });
     }
     render() { 
-        console.log(firebase);
+        // console.log(firebase);
         return ( <div id="firebaseui-auth-container"></div>);
     }
 }

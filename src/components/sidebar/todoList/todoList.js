@@ -37,7 +37,7 @@ class TodoApp extends React.Component {
   removeItemAll () {
 
         var newList = todoItems.filter(item => !item.done)
-        console.log(todoItems)
+        // console.log(todoItems)
         todoItems = newList
         this.setState({todoItems : todoItems} );
 

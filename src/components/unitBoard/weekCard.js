@@ -16,7 +16,7 @@ constructor(){
 
     render() { 
          return (
-             <Link to='/home/sidebar/kfc3241' style={{textDecoration:'none'}}>
+             <Link to={'/home/sidebar/'+this.props.unitName+'/'+this.props.id} style={{textDecoration:'none'}}>
              <div style={{width: "100%"}} className="border-2 rounded border-light-grey p-4 my-2">
                  <div>
                     <div className="brow bg-red-light mb-1"></div>

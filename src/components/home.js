@@ -33,7 +33,7 @@ class Home extends Component {
 
   render() {
     if (this.state.data){
-      console.log(this.state.data);
+      // console.log(this.state.data);
       return (
         <div className='h-full bg-grey-lightest '>
           <div className='searchBox	m-auto pt-4' style={{display: this.componentDidUpdate()}} >
