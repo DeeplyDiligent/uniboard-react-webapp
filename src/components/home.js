@@ -6,17 +6,36 @@ import {
   BrowserView,
   MobileView,
   isBrowser,
-  isMobile
+  isMobileOnly
 } from "react-device-detect";
 
 
 class Home extends Component {
 
+  state = { 
+    data : {},
+  }
+constructor(props){
+  super(props)
+  var context = this
+  this.props.db.get().then(function(doc) {
+    if (doc.exists) {
+        context.setState({data : doc.data()})
+        
+    }
+});
+}
+
 componentDidUpdate(){
-  var displayString = isMobile ? 'none' : 'table'
+  var displayString = isMobileOnly ? 'none' : 'table'
   return (displayString)
 }
+
+
     render() {
+     
+
+    if (this.state.data){
       return (
         <div className='h-full bg-grey-lightest '>
           <div className='searchBox	m-auto pt-4' style={{display: this.componentDidUpdate()}} >
@@ -24,10 +43,18 @@ componentDidUpdate(){
           <div/>
           <div/>
         </div>
-        <UnitBoards />
+        <UnitBoards db={this.state.data}/>
         </div>
         
       );
+    }
+    else{
+      return(
+      <div>
+        Begging Moodle for Data...
+      </div>
+      )
+    }
     }
   }
 

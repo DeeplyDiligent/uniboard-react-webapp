@@ -4,7 +4,7 @@ class Search extends Component {
   state = {};
   render() {
     return (
-      <div className="rounded-full shadow-inner bg-white sm:bg-grey-lightest p-4">
+      <div className="rounded-full shadow-inner bg-white sm:bg-grey-lightest p-4 flex">
         <i className="fas fa-search mr-4" />
         <input
           className="bg-white sm:bg-grey-lightest"

@@ -5,7 +5,11 @@ import {isMobileOnly} from 'react-device-detect';
 
 class UnitBoards extends Component {
 
-    
+    constructor(props){
+        super(props)
+    }
+
+  
     render() { 
         return ( 
             <div className="jumbotron flex p-2 " style={{height: isMobileOnly ? 'calc(100% - 10px)' : 'calc(100% - 68px)', overflowX:"scroll", overflowY:"hidden"}}>

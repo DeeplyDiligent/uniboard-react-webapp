@@ -13,7 +13,9 @@ import SidebarSearch from './components/sidebar/sidebarSearch';
 
 
 class App extends Component {
-  state = {}
+  state = {
+    database : {}
+  }
   constructor(props) {
     super(props);
     this.config = {
@@ -34,11 +36,11 @@ class App extends Component {
     });
     this.state.loggedIn = 'not-checked';
     this.checkSignedIn(this);
+    this.checkSignedIn = this.checkSignedIn.bind(this)
   }
 
   checkSignedIn(context){
     firebase.auth().onAuthStateChanged(function(user) {
-
       if (user) {
         context.setState({loggedIn:true})
       } else {
@@ -46,18 +48,21 @@ class App extends Component {
       }
     });
   }
+
   
   render() {
     if (this.state.loggedIn === true){
+      this.userInfo = this.db.collection('dba').doc('eGlJZRO3Bv0h5OUOENIa')
       return (
         <Router>
         <div className="App">
-          <Route path="/home/sidebar/:id"  render={(props) => <Sidebar {...props} />} />
-          <Route path="/home/search"  render={(props) => <SidebarSearch {...props} />} />
+          <Route path="/home/sidebar/:id"  render={(props) => <Sidebar db={this.userInfo} {...props} />} />
+          <Route path="/home/search"  render={(props) => <SidebarSearch db={this.userInfo} {...props} />} />
           <Navbar />
+
           <div className="mainComponent" >
             <Switch>
-              <Route path="/home" component={Home} />
+              <Route path="/*" render={(props) => <Home db={this.userInfo} {...props} />} />
             </Switch>
           </div>
         </div>
@@ -68,7 +73,7 @@ class App extends Component {
         <div id="loader">Loading...</div>
       );
     } else {
-      return(<React.Fragment><Navbar /><RegisterUser /></React.Fragment>);
+      return(<React.Fragment><Router><Navbar /></Router><RegisterUser /></React.Fragment>);
     }
   }
 }
