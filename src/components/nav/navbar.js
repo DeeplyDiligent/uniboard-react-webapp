@@ -1,17 +1,18 @@
 import React, { Component } from 'react';
 import {isMobile} from 'react-device-detect';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import firebase from 'firebase';
 
 
 class Navbar extends Component {
     state = {}
     constructor(props){
         super(props);
-        this.state.expandedClass = "hidden";
-        // if (isMobile) {
-            
-        // }
-        
+        this.state.expandedClass = "hidden";        
+    }
+
+    logout = () => {
+        firebase.auth().signOut();
     }
     
     expandNavbar = () => {
@@ -57,6 +58,9 @@ class Navbar extends Component {
                     </a>
                     <a href="/contact" className="block mt-4 lg:inline-block lg:mt-0 text-purple hover:text-purple-light mr-6">
                         Contact
+                    </a>
+                    <a href='#' onClick = {this.logout} className="block mt-4 lg:inline-block lg:mt-0 text-purple hover:text-purple-light mr-6">
+                        Logout
                     </a>
                     
                     {/* <a href="#" className="inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-purple hover:bg-white mt-4 lg:mt-0">Download</a> */}
