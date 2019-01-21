@@ -18,7 +18,6 @@ this.createLib = this.createLib.bind(this)
   
 
     Object.assign(itemVals, {color : j})
-    console.log(itemVals)
     this.state.libraries.push(itemVals)
     // this.state.colors.push(itemVals)
 
