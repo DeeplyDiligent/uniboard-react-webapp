@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import UnitBoards from "./unitBoard/unitBoards";
-import Search from "./sidebar/search";
+import Search from "./sidebarSearch/search";
 import firebase from "firebase";
 import {
   BrowserView,

@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import Attachments from './attachments/attachments';
-import TodoApp from './todoList/todoList'
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import Search from './search'
 

@@ -9,7 +9,7 @@ import Contact from './components/contact';
 import Home from './components/home';
 import Sidebar from './components/sidebar/sidebar';
 import firebase from 'firebase';
-import SidebarSearch from './components/sidebar/sidebarSearch';
+import SidebarSearch from './components/sidebarSearch/sidebarSearch';
 
 
 class App extends Component {
@@ -35,18 +35,16 @@ class App extends Component {
         timestampsInSnapshots: true
     });
     this.state.loggedIn = 'not-checked';
-    this.checkSignedIn(this);
-    this.checkSignedIn = this.checkSignedIn.bind(this)
+    firebase.auth().onAuthStateChanged(this.changeAuthState);
   }
 
-  checkSignedIn(context){
-    firebase.auth().onAuthStateChanged(function(user) {
-      if (user) {
-        context.setState({loggedIn:true})
-      } else {
-        context.setState({loggedIn:false})
-      }
-    });
+
+  changeAuthState = (user) => {
+    if (user) {
+      this.setState({loggedIn:true})
+    } else {
+      this.setState({loggedIn:false})
+    }
   }
 
   
