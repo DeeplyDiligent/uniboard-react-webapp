@@ -2,21 +2,41 @@ import React, { Component } from "react";
 import SearchExample from './SearchExample'
 
 class Search extends Component {
-  state = {};
 
+  constructor(props){
+super(props);
+this.createLib = this.createLib.bind(this)
+
+}
+
+  state = {
+    libraries: [],
+    colors:[]
+  };
+
+  createLib(itemVals,j,k){
+  
+
+    Object.assign(itemVals, {color : j})
+    console.log(itemVals)
+    this.state.libraries.push(itemVals)
+    // this.state.colors.push(itemVals)
+
+}
 
   render() {
-   
+  
   var libraries = []
   if(this.props.database != null){
-        Object.values(this.props.database).map(item => Object.values(item).map(itemVals => libraries.push(itemVals)))
-
+        Object.values(this.props.database).map((item,j) => Object.values(item).map((itemVals) => this.createLib(itemVals,j)))
+        // Object.values(this.props.database).map(item => Object.values(item).map(itemVals => console.log(itemVals)))
+        // Object.values(this.props.database).map((item ,j) => console.log(j))
+        //  Object.values(this.props.database).map(item,j => console.log(Object.values(item)))
   }
-  
- 
+//  this.state.libraries.map(thing => console.log(thing.color))
     return (
       <div id="content" className='w-full' >
-      <SearchExample items={libraries} />,
+      <SearchExample items={this.state.libraries} />,
       </div>
     );
   
