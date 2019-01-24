@@ -22,6 +22,12 @@ class Navbar extends Component {
     
     render() { 
         this.expandedItemsAllClasses = "w-full "+this.state.expandedClass+" flex-grow lg:flex lg:items-center lg:w-auto"
+        let logOutButton = (<div></div>);
+        if(this.props.loggedIn){
+            logOutButton = (<a href='javascript:void(0);' onClick = {this.logout} className="block mt-4 lg:inline-block lg:mt-0 text-purple hover:text-purple-light mr-6">
+                Logout
+            </a>);
+        }
         return (
             <nav className="flex items-center justify-between flex-wrap bg-white p-4 shadow-md bg-black relative w-full" style={{zIndex:"500", top:"0px"}} >
                 <div className="flex items-center flex-no-shrink text-purple mr-6">
@@ -58,12 +64,8 @@ class Navbar extends Component {
                     </a>
                     <a href="/contact" className="block mt-4 lg:inline-block lg:mt-0 text-purple hover:text-purple-light mr-6">
                         Contact
-                    </a>
-                    <a href='#' onClick = {this.logout} className="block mt-4 lg:inline-block lg:mt-0 text-purple hover:text-purple-light mr-6">
-                        Logout
-                    </a>
-                    
-                    {/* <a href="#" className="inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-purple hover:bg-white mt-4 lg:mt-0">Download</a> */}
+                    </a>   
+                    {logOutButton}
                     </div>
                 </div>
             </nav>

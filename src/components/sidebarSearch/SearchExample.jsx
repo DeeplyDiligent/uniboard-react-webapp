@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import SearchCard from "./searchCard.tsx";
+import SearchCard from "./searchCard";
 
 class SearchExample extends React.Component {
   borderColors = ["#ebb2fc", "#fae0a4", "#a4cdfc", "#90eea9", "blue-light"];
@@ -36,12 +36,12 @@ class SearchExample extends React.Component {
           <i className="fas fa-search mr-4" />
           <input
             type="text"
+            className="bg-transparent"
             value={this.state.searchString}
             onChange={this.handleChange}
-            placeholder="Search Units, PDFs, Forums..."
+            placeholder="Search..."
           />
         </div>
-
         <div className="w-full">
           {libraries.map(
             (i, j) => (
@@ -52,9 +52,7 @@ class SearchExample extends React.Component {
                 img={i.img}
                 text={i.text}
               />
-            ),
-
-            this
+            )
           )}
         </div>
       </div>

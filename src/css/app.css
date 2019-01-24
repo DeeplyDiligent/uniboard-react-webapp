@@ -36,7 +36,7 @@ body{
     height: 4px;
 }
 
-#loader{
+.loader{
     text-align: center;
     /* height: 100%; */
     font-size: 85px;

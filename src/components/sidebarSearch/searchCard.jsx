@@ -1,16 +1,6 @@
 import * as React from "react";
 
-export interface SearchCardProps {
-    link: string;
-    borderColors: object;
-    color: string;
-    img: string;
-    text: string;
-}
-
-export interface SearchCardState {}
-
-class SearchCard extends React.Component<SearchCardProps, SearchCardState> {
+class SearchCard extends React.Component {
   state = {};
   render() {
     return (

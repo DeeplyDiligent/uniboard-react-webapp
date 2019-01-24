@@ -35,7 +35,7 @@ this.createLib = this.createLib.bind(this)
 //  this.state.libraries.map(thing => console.log(thing.color))
     return (
       <div id="content" className='w-full' >
-      <SearchExample items={this.state.libraries} />,
+      <SearchExample items={this.state.libraries} />
       </div>
     );
   

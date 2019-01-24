@@ -46,7 +46,7 @@ class Home extends Component {
         </div>
       );
     } else {
-      return <div>Begging Moodle for Data...</div>;
+      return <div className="loader">Begging Moodle for Data...</div>;
     }
   }
 }

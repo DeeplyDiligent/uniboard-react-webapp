@@ -11,8 +11,7 @@ class RegisterUser extends Component {
             signInOptions: [
                 // Leave the lines as is for the providers you want to offer your users.
                 firebase.auth.GoogleAuthProvider.PROVIDER_ID
-            ],
-            signInSuccessUrl: '/home/'
+            ]
             // Other config options...
         });
     }
