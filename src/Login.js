@@ -44,8 +44,8 @@ class Login extends Component {
 
   render() {
     if (
-      this.state.loggedIn === true &&
-      this.state.email.includes("student.monash.edu")
+      this.state.loggedIn === true 
+      // && this.state.email.includes("student.monash.edu")
     ) {
       return (
         <Router>

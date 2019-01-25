@@ -12,12 +12,15 @@ class UnitBoard extends Component {
         const colorList = ['#ebb2fc','#fae0a4','#a4cdfc','#90eea9', 'blue-light']
         var borderColor = colorList[this.props.number]
         return ( 
-        <div style={{minWidth:"250px", height:'calc(100% - 16px)' , overflow:'hidden', borderRadius:'1rem', borderColor:borderColor}} 
-            className='flex-1 max-w-sm overflow-hidden shadow-lg m-2 bg-white border-b-4 border-t-4' >
-                <div className="px-6 py-4 bg-white shadow" >
-                    <div className='flex'> 
-                        <i className="fas fa-graduation-cap mt-2"></i>
-                        <div className=" text-3xl ml-4">{this.shortenName(this.props.unitName)}</div>
+        <div style={{minWidth:"250px", height:'calc(100% - 16px)' , overflow:'hidden', borderRadius:'6px', borderColor:borderColor}} 
+            className='flex-1 max-w-sm overflow-hidden shadow-lg m-2 bg-white border-b-8' >
+                <div className="flex justify-between content-center mt-2 px-6 py-4 bg-white" >
+                    <div className="flex1">
+                        <i class="text-2xl text-grey fab fa-flickr"></i>
+                        <span className=" text-3xl font-semibold ml-4">{this.shortenName(this.props.unitName)}</span>
+                    </div>
+                    <div className="flex1">
+                        <i class="text-xl text-grey-dark fas fa-ellipsis-v"></i>
                     </div>
                 </div>
             <div className="px-4 py-2" style={ {overflowY: 'scroll', height: 'calc(100% - 66px)'}}>
