@@ -2,8 +2,8 @@ import './css/tailwind.css';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './css/app.css';
-import App from './Routes';
+import Login from './Login';
 import registerServiceWorker from './registerServiceWorker';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(<Login />, document.getElementById('root'));
 registerServiceWorker();
