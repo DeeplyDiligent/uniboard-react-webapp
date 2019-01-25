@@ -44,3 +44,13 @@ body{
     top: 42%;
     position: absolute;
 }
+
+.center-on-page{
+    text-align: center;
+    margin:auto;
+    top:50%;
+    left:50%;
+    position: absolute;
+    transform: translateY(-50%);
+    transform: translateX(-50%);
+}

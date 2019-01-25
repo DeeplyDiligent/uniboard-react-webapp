@@ -1,9 +1,32 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
+import firebase from 'firebase';
 class GetTheExtension extends Component {
-    state = {  }
-    render() { 
-        return ( <div>GetTheExtension</div> );
-    }
+  state = {};
+  logout = () => {
+    firebase.auth().signOut();
+  };
+  render() {
+    return (
+      <div className="center-on-page">
+        <h3>
+          Hi there! If you're new here, you can get the extension at the link
+          below. Otherwise, you may have logged into the wrong account.
+        </h3>
+        <button
+          onClick={this.logout}
+          className="bg-blue hover:bg-blue-dark text-white font-bold py-2 px-4 my-2 rounded"
+        >
+          Logout
+        </button>
+        &emsp;
+        <a href="//moodlehero.net">
+          <button className="bg-blue hover:bg-blue-dark text-white font-bold py-2 px-4 my-2 rounded">
+            Get The Extension
+          </button>
+        </a>
+      </div>
+    );
+  }
 }
- 
+
 export default GetTheExtension;

@@ -5,6 +5,7 @@ import Sidebar from "./components/sidebar/sidebar";
 // import firebase from 'firebase';
 import SidebarSearch from "./components/sidebarSearch/sidebarSearch";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import GetTheExtension from "./components/getTheExtension";
 
 class App extends Component {
   state = { databaseID: null };
@@ -23,12 +24,14 @@ class App extends Component {
         let data = doc.data();
         if (data) {
           this.setState({ databaseID: data.databaseID });
+        } else {
+          this.setState({ databaseID: "user not found" });
         }
       });
     }
   }
   render() {
-    if (this.state.databaseID) {
+    if (this.state.databaseID && this.state.databaseID !== 'user not found') {
       console.log(this.state.databaseID, "is the database id");
       console.log(this.props.uid, "has been provided as the user id");
       this.userInfo = this.props.db
@@ -58,6 +61,8 @@ class App extends Component {
           </div>
         </Router>
       );
+    } else if (this.state.databaseID === "user not found") {
+        return <GetTheExtension />
     } else {
       return <div className="loader">Loading...</div>;
     }
