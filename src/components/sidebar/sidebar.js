@@ -55,7 +55,6 @@ class Sidebar extends Component {
         else {
             return(
                 <div>
-                    Waiting for data...
                 </div>
             )
         }
