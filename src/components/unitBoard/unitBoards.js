@@ -10,7 +10,7 @@ class UnitBoards extends Component {
   
     render() {
         return ( 
-            <div className="jumbotron flex p-2 " style={{height: isMobileOnly ? 'calc(100% - 10px)' : 'calc(100% - 68px)', overflowX:"scroll", overflowY:"hidden"}}>
+            <div className="flex max-w-5xl mx-auto p-2" style={{height: isMobileOnly ? 'calc(100% - 10px)' : 'calc(100% - 68px)', overflowX:"scroll", overflowY:"hidden"}}>
             {Object.keys(this.props.database).map((i,j)=>{
                 if(i!='date'){
                     return <UnitBoard key={j} database={this.props.database[i]} unitName={i} number={j}/>

@@ -33,9 +33,9 @@ class Home extends Component {
     if (this.state.data) {
       // console.log(this.state.data);
       return (
-        <div className="h-full bg-grey-lightest ">
+        <div className="h-full mb-4 bg-grey-lightest ">
           <div
-            className="searchBox	m-auto pt-4"
+            className="searchBox m-auto pt-4"
             style={{ display: this.componentDidUpdate() }}
           >
             <Search />
