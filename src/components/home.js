@@ -23,14 +23,12 @@ class Home extends Component {
     if (this.props.data) {
       // console.log(this.state.data);
       return (
-        <div className="h-full mb-4 bg-grey-lightest ">
+        <div className="h-full flex flex-col bg-grey-lightest ">
           <div
-            className="searchBox m-auto pt-4"
+            className="searchBox flex-shrink m-auto pt-4"
             style={{ display: this.componentDidUpdate() }}
           >
             <Search />
-            <div />
-            <div />
           </div>
           <UnitBoards data={this.props.data} />
         </div>

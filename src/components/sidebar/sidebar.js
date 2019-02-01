@@ -20,8 +20,7 @@ class Sidebar extends Component {
         
         // console.log(this.db.collection('dba').doc('eGlJZRO3B
         let weekData = this.props.data[this.props.match.params.id][this.props.match.params.branchid];
-        console.log(weekData);
-        const styles = {}   
+        const styles = {};
         styles.sidebar = {right:0, zIndex:'1000', overflow:'scroll'}
         styles.sidebarBackground = {rgba:'(0,0,0,0)'}
         if(weekData){
@@ -30,7 +29,7 @@ class Sidebar extends Component {
                 <Link to='/home'> 
                     <div className="sidebarBackground h-full" style={styles.sidebarBackground}></div>
                 </Link>
-                <Box pose={this.state.isVisible ? 'visible' : 'hidden'} className="sidebarContent fixed bg-white max-w-sm rounded h-full shadow-lg px-8 py-4 sm:w-full lg:w-1/3 h-full" style={styles.sidebar}>                    
+                <Box pose={this.state.isVisible ? 'visible' : 'hidden'} className="sidebarContent fixed bg-white max-w-sm rounded h-full shadow-lg px-8 py-4 w-full lg:w-1/3 h-full" style={styles.sidebar}>                    
                         <Link to='/home'>
                         <div className="text-right pb-2 text-3xl">
                         <i className="fas fa-times"></i></div>
@@ -38,7 +37,7 @@ class Sidebar extends Component {
                         <div className="text-2xl font-bold">{this.props.match.params.id}</div>
                         {/* <div className="text">{this.props.match.params.id}</div> */}
                         <div className="bg-red-light brow my-4"></div>
-                        <div className = "text-md text-grey">Week name and topic (if applicable)</div>
+                        <div className = "text-md text-grey-darker">{weekData.name}</div>
                         <Attachments attachments={weekData.links} heading={"ATTACHMENTS"}/>
                         <hr/>
                         <TodoApp/>

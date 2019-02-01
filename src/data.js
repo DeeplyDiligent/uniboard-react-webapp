@@ -1,4 +1,5 @@
 import firebase from "firebase";
+import he from 'he';
 
 class Database {
 
@@ -19,27 +20,10 @@ class Database {
         this.db.settings({
         timestampsInSnapshots: true
         });
-        //firebase.auth().onAuthStateChanged(this.changeAuthState);
-    }
-
-    async createDataDictFromUserId(uid){
-        let databaseId = await this.getDatabaseIdFromUserId(uid)
-        let rawData = await this._getDictFromDatabaseId(databaseId);
-        if (rawData){
-            delete rawData['date'];
-            let dict = {};
-            for(const courseName in rawData){
-                const courseDict = rawData[courseName];
-                dict[courseName] = this._parseCourse(courseDict);
-                //dict[courseName]["unitCode"] = this.shortenName(courseName);
-            }
-            return dict;
-        }
-        return false;   
+        //firebase.auth().onAuthStateChanged(this.changeAuthState); 
     }
 
     async createDataDictFromDatabaseId(databaseId){
-        console.log(databaseId)
         let rawData = await this._getDictFromDatabaseId(databaseId);
         if (rawData){
             delete rawData['date'];
@@ -51,6 +35,27 @@ class Database {
             return dict;
         }
         return false;   
+    }
+
+    async createRealtimeDataDictFromDatabaseId(databaseId){
+        this.databaseRef = await this._getRealtimeRefFromDatabaseId(databaseId);
+        return this;
+    }
+
+    onUpdate(func){
+        this.databaseRef.onSnapshot((doc)=>{
+            let rawData = doc.data()
+            if (rawData){
+                delete rawData['date'];
+                let dict = {};
+                for(const courseName in rawData){
+                    const courseDict = rawData[courseName];
+                    dict[courseName] = this._parseCourse(courseDict);
+                }
+                func(dict);
+            }
+        })
+
     }
 
     async getDatabaseIdFromUserId(uid){
@@ -64,7 +69,7 @@ class Database {
             const item = courseDict[id]
             if(id.startsWith('expandable')){
                 let week = {
-                    'name': item['text'],
+                    'name': he.decode(item['text']),
                     'links': item['children'].map(
                         link_id => this.__parseLink(courseDict[link_id])),
                     'type': 'week'
@@ -78,10 +83,10 @@ class Database {
 
     __parseLink(linkDict){
         let dict = {
-            'name': linkDict['text'],
+            'name': he.decode(linkDict['text']),
             'url': linkDict['link'],
             'type': 'link',
-            'linktype': linkDict['imgAlt'] // use alt-text
+            'linktype': he.decode(linkDict['imgAlt']) // use alt-text
         }
         return dict;
     }
@@ -90,6 +95,11 @@ class Database {
     async _getDictFromDatabaseId(databaseId){
         let x = await this.db.collection('dba').doc(databaseId).get();
         return x.data();
+    }
+
+    async _getRealtimeRefFromDatabaseId(databaseId){
+        let x = await this.db.collection('dba').doc(databaseId);
+        return x;
     }
 
     setAuthStateChangedCallback(callback){
@@ -108,5 +118,5 @@ class Database {
 }
 
  const database = new Database();
- Object.freeze(database);
+//  Object.freeze(database);
 export default database;

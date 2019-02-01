@@ -11,7 +11,7 @@ class Attachments extends Component {
                 <div className="my-10 inline-flex text-lg w-full">
                     <i className="fas fa-paperclip"></i>
                     <div className="px-3 font-bold">{this.props.heading}</div>
-                    <div className="w-full text-right">5</div>
+                    <div className="w-full text-right">{this.props.attachments.length}</div>
                 </div>
                 {this.props.attachments.map((attachment, i) =>{
                     return <Attachment key={i} name={attachment.name} url={attachment.url}/>

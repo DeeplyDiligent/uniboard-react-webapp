@@ -12,9 +12,10 @@ class App extends Component {
   state = { database: "loading" };
   constructor(props) {
     super(props);
-    console.log(this.props.match.params.id);
-    database.createDataDictFromDatabaseId(this.props.uid).then(x => {
-      this.setState({ data: x });
+    database.createRealtimeDataDictFromDatabaseId(this.props.uid).then(db => {
+      db.onUpdate(x => {
+        this.setState({ data: x });
+      });
     });
   }
   render() {
@@ -22,7 +23,7 @@ class App extends Component {
       console.log(this.state.data);
       return (
         <Router>
-          <div className="App">
+          <div className="App overflow-hidden">
             <Route
               path="/home/sidebar/:id/:branchid"
               render={props => <Sidebar data={this.state.data} {...props} />}

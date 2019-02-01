@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import UnitBoard from './unitBoard'
-import {isMobileOnly} from 'react-device-detect';
 
 
 class UnitBoards extends Component {
@@ -10,9 +9,9 @@ class UnitBoards extends Component {
   
     render() {
         return ( 
-            <div className="flex max-w-5xl mx-auto p-2" style={{height: isMobileOnly ? 'calc(100% - 10px)' : 'calc(100% - 68px)', overflowX:"scroll", overflowY:"hidden"}}>
-            {Object.keys(this.props.data).map((key, _) => {
-                return <UnitBoard unitData={this.props.data[key]} unitName={key} unitCode={key.unitCode} key={key}/>
+            <div className="flex flex-grow max-w-5xl p-2" style={{ overflowX:"scroll", overflowY:"hidden"}}>
+            {Object.keys(this.props.data).map((key, index) => {
+                return <UnitBoard unitData={this.props.data[key]} unitName={key} unitCode={key.unitCode} key={key} number={index}/>
             })}
             <div>&nbsp;</div>
             </div>
