@@ -26,7 +26,8 @@ class UnitBoard extends Component {
             <div className="px-4 py-2" style={ {overflowY: 'scroll', height: 'calc(100% - 66px)'}}>
                 {Object.keys(this.props.unitData).map((key, _)=>{
                     let value = this.props.unitData[key];
-                    return <WeekCard weekName={value.name} data={value} unitName={this.shortenName(this.props.unitName)} key={key} />
+                    return <WeekCard weekName={value.name} data={value} unitName={this.shortenName(this.props.unitName)} 
+                    key={key} branchId={key}/>
                 })}
             </div>
         </div> 

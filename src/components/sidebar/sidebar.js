@@ -14,22 +14,16 @@ class Sidebar extends Component {
 
     componentDidMount(){
         this.setState({isVisible:true})
-        this.props.db.get().then((doc)=> {
-            if (doc.exists) {
-                this.setState({data: doc.data()});
-                console.log("Document data:", doc.data());
-            }
-        });
     }
 
     render() {
         
         // console.log(this.db.collection('dba').doc('eGlJZRO3B
-        console.log(this.props)
+        console.log(this.props.data)
         const styles = {}   
         styles.sidebar = {right:0, zIndex:'1000', overflow:'scroll'}
         styles.sidebarBackground = {rgba:'(0,0,0,0)'}
-        if(this.state.data){
+        if(this.props.data){
             return (
                 <div className="w-full h-full absolute" >
                 <Link to='/home'> 

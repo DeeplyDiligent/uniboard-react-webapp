@@ -24,7 +24,7 @@ class App extends Component {
           <div className="App">
             <Route
               path="/home/sidebar/:id/:branchid"
-              render={props => <Sidebar db={this.state.data} {...props} />}
+              render={props => <Sidebar data={this.state.data} {...props} />}
             />
             <Route
               path="/home/search"
