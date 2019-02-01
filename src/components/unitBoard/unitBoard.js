@@ -13,8 +13,8 @@ class UnitBoard extends Component {
         var borderColor = colorList[this.props.number]
         return ( 
         <div style={{minWidth:"250px", height:'calc(100% - 16px)' , overflow:'hidden', borderRadius:'6px', borderColor:borderColor}} 
-            className='flex-1 max-w-sm overflow-hidden shadow-lg m-2 bg-white border-b-8' >
-                <div className="flex justify-between content-center mt-2 px-6 py-4 bg-white border-b border-grey-light" >
+            className='flex flex-1 max-w-sm overflow-hidden shadow-lg m-2 bg-white border-b-8 flex-col' >
+                <div className="flex justify-between content-center mt-2 px-6 py-4 bg-white border-b border-grey-light flex-no-shrink" >
                     <div className="flex1">
                         <i className="text-2xl text-grey fab fa-flickr"></i>
                         <span className=" text-3xl font-semibold ml-4">{this.shortenName(this.props.unitName)}</span>
