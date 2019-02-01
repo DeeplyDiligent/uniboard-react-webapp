@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import UnitBoard from './unitBoard'
+import UnitBoard from './unitBoard';
 
 
 class UnitBoards extends Component {
