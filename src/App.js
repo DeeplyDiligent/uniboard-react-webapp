@@ -6,23 +6,19 @@ import Sidebar from "./components/sidebar/sidebar";
 import SidebarSearch from "./components/sidebarSearch/sidebarSearch";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import GetTheExtension from "./components/getTheExtension";
-import database from './data';
+import database from "./data";
 
 class App extends Component {
   state = { database: "loading" };
   constructor(props) {
     super(props);
     console.log(this.props.match.params.id);
-    if(this.props.match.params.id){
-      database.createDataDictFromDatabaseId(this.props.match.params.id).then(
-        x => {this.setState({data: x})})
-    } else {
-      database.createDataDictFromUserId(this.props.uid).then(
-        x => {this.setState({data: x})})
-    }
+    database.createDataDictFromDatabaseId(this.props.uid).then(x => {
+      this.setState({ data: x });
+    });
   }
   render() {
-    if(this.state.data){
+    if (this.state.data) {
       console.log(this.state.data);
       return (
         <Router>
@@ -33,7 +29,9 @@ class App extends Component {
             />
             <Route
               path="/home/search"
-              render={props => <SidebarSearch db={this.state.data} {...props} />}
+              render={props => (
+                <SidebarSearch db={this.state.data} {...props} />
+              )}
             />
             <Navbar loggedIn={true} />
 

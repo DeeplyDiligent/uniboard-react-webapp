@@ -21,7 +21,7 @@ class Login extends Component {
 
   changeAuthState = user => {
     if (user) {
-      this.setState({ loggedIn: true, userId: user.uid, email: user.email });
+      this.setState({ loggedIn: true, email: user.email });
     } else {
       this.setState({ loggedIn: false, userId: null });
     }
@@ -38,13 +38,13 @@ class Login extends Component {
             <Route
               path="/app/user/:id"
               render={props => (
-                <App uid={this.state.userId} {...props} />
+                <App uid={this.state.email} {...props} />
               )}
             />
             <Route
               path="/*"
               render={props => (
-                <App uid={this.state.userId} {...props} />
+                <App uid={this.state.email} {...props} />
               )}
             />
           </Switch>
