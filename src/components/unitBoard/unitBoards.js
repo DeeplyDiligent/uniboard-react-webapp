@@ -12,7 +12,7 @@ class UnitBoards extends Component {
         return ( 
             <div className="flex max-w-5xl mx-auto p-2" style={{height: isMobileOnly ? 'calc(100% - 10px)' : 'calc(100% - 68px)', overflowX:"scroll", overflowY:"hidden"}}>
             {Object.keys(this.props.data).map((key, _) => {
-                return <UnitBoard unitData={this.props.data[key]} unitName={key} key={key}/>
+                return <UnitBoard unitData={this.props.data[key]} unitName={key} unitCode={key.unitCode} key={key}/>
             })}
             <div>&nbsp;</div>
             </div>
