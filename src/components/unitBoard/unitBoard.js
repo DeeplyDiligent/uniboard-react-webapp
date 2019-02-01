@@ -24,11 +24,9 @@ class UnitBoard extends Component {
                     </div>
                 </div>
             <div className="px-4 py-2" style={ {overflowY: 'scroll', height: 'calc(100% - 66px)'}}>
-                {Object.keys(this.props.database).map((i,j)=>{
-                    if(i.includes('expandable_branch')){
-                        return <WeekCard key={j} data={this.props.database[i]} unitName={this.shortenName(this.props.unitName)} id={i} />
-                    }
-                    return false;
+                {Object.keys(this.props.unitData).map((key, _)=>{
+                    let value = this.props.unitData[key];
+                    return <WeekCard weekName={value.name} data={value} unitName={this.shortenName(this.props.unitName)} key={key} />
                 })}
             </div>
         </div> 

@@ -7,7 +7,7 @@ import RegisterUser from "./components/registerUser";
 import firebase from "firebase";
 import App from "./App";
 import LoginWithMonash from "./components/loginWithMonash";
-import database from './data'
+import database from './data.js'
 
 class Login extends Component {
   state = {
@@ -38,13 +38,13 @@ class Login extends Component {
             <Route
               path="/app/user/:id"
               render={props => (
-                <App db={this.db} uid={this.state.userId} {...props} />
+                <App uid={this.state.userId} {...props} />
               )}
             />
             <Route
               path="/*"
               render={props => (
-                <App db={this.db} uid={this.state.userId} {...props} />
+                <App uid={this.state.userId} {...props} />
               )}
             />
           </Switch>
