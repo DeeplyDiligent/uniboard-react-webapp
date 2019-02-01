@@ -22,7 +22,8 @@ class Database {
         //firebase.auth().onAuthStateChanged(this.changeAuthState);
     }
 
-    async createDataDictFromDatabaseId(databaseId){
+    async createDataDictFromUserId(uid){
+        let databaseId = await this.getDatabaseIdFromUserId(uid)
         let rawData = await this._getDictFromDatabaseId(databaseId);
         delete rawData['date'];
         let dict = {};
@@ -31,6 +32,11 @@ class Database {
             dict[courseName] = this._parseCourse(courseDict);
         }
         return dict
+    }
+
+    async getDatabaseIdFromUserId(uid){
+        let id = await this.db.collection("authidLinking").doc(uid).get();
+        return id.data().databaseID;
     }
 
     _parseCourse(courseDict){
@@ -68,8 +74,10 @@ class Database {
     }
 
     setAuthStateChangedCallback(callback){
-        firebase.auth().onAuthStateChanged(this.changeAuthState);
+        firebase.auth().onAuthStateChanged(callback);
     }
+
+
 }
 
 const database = new Database();

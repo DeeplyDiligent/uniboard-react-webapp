@@ -6,47 +6,29 @@ import Sidebar from "./components/sidebar/sidebar";
 import SidebarSearch from "./components/sidebarSearch/sidebarSearch";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import GetTheExtension from "./components/getTheExtension";
+import database from './data';
 
 class App extends Component {
   state = { databaseID: null };
   constructor(props) {
     super(props);
-    this.databaseIdReference = this.props.db
-      .collection("authidLinking")
-      .doc(this.props.uid);
-    if (this.props.match.params.id) {
-      this.state.databaseID = this.props.match.params.id;
-      this.databaseIdReference.set({
-        databaseID: this.props.match.params.id
-      });
-    } else {
-      this.databaseIdReference.get().then(doc => {
-        let data = doc.data();
-        if (data) {
-          this.setState({ databaseID: data.databaseID });
-        } else {
-          this.setState({ databaseID: "user not found" });
-        }
-      });
-    }
+    
+    database.createDataDictFromUserId(this.props.uid).then(
+      x => {this.setState({data: x})})
   }
   render() {
-    if (this.state.databaseID && this.state.databaseID !== 'user not found') {
-      console.log(this.state.databaseID, "is the database id");
-      console.log(this.props.uid, "has been provided as the user id");
-      this.userInfo = this.props.db
-        .collection("dba")
-        .doc(this.state.databaseID);
+    if(this.state.data){
+      console.log(this.state.data);
       return (
         <Router>
           <div className="App">
             <Route
               path="/home/sidebar/:id/:branchid"
-              render={props => <Sidebar db={this.userInfo} {...props} />}
+              render={props => <Sidebar db={this.state.data} {...props} />}
             />
             <Route
               path="/home/search"
-              render={props => <SidebarSearch db={this.userInfo} {...props} />}
+              render={props => <SidebarSearch db={this.state.data} {...props} />}
             />
             <Navbar loggedIn={true} />
 
@@ -54,16 +36,16 @@ class App extends Component {
               <Switch>
                 <Route
                   path="/*"
-                  render={props => <Home db={this.userInfo} {...props} />}
+                  render={props => <Home db={this.state.data} {...props} />}
                 />
               </Switch>
             </div>
           </div>
         </Router>
       );
-    } else if (this.state.databaseID === "user not found") {
-        return <GetTheExtension />
-    } else {
+    } /*else if (this.state.databaseID === "user not found") {
+        return <GetTheExtension /> // TODO handle this case
+    }*/ else {
       return <div className="loader">Loading...</div>;
     }
   }

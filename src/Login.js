@@ -38,13 +38,13 @@ class Login extends Component {
             <Route
               path="/app/user/:id"
               render={props => (
-                <App db={this.db} uid={this.state.userId} {...props} />
+                <App uid={this.state.userId} {...props} />
               )}
             />
             <Route
               path="/*"
               render={props => (
-                <App db={this.db} uid={this.state.userId} {...props} />
+                <App uid={this.state.userId} {...props} />
               )}
             />
           </Switch>
