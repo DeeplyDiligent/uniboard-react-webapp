@@ -7,7 +7,7 @@ import RegisterUser from "./components/registerUser";
 import firebase from "firebase";
 import App from "./App";
 import LoginWithMonash from "./components/loginWithMonash";
-import database from './data'
+import database from './data.js'
 
 class Login extends Component {
   state = {

@@ -25,13 +25,16 @@ class Database {
     async createDataDictFromUserId(uid){
         let databaseId = await this.getDatabaseIdFromUserId(uid)
         let rawData = await this._getDictFromDatabaseId(databaseId);
-        delete rawData['date'];
-        let dict = {};
-        for(const courseName in rawData){
-            const courseDict = rawData[courseName];
-            dict[courseName] = this._parseCourse(courseDict);
+        if (rawData){
+            delete rawData['date'];
+            let dict = {};
+            for(const courseName in rawData){
+                const courseDict = rawData[courseName];
+                dict[courseName] = this._parseCourse(courseDict);
+            }
+            return dict;
         }
-        return dict
+        return false;   
     }
 
     async getDatabaseIdFromUserId(uid){
@@ -80,10 +83,6 @@ class Database {
 
 }
 
-const database = new Database();
-Object.freeze(database);
+ const database = new Database();
+ Object.freeze(database);
 export default database;
-
-//let data = new Database();
-//let dict = data.createDataDictFromDatabaseId("dg6uuUTVMtIkvbtg97SE");
-//dict.then(x => console.log(x))

@@ -30,6 +30,7 @@ class Home extends Component {
   }
 
   render() {
+    console.log(this.state.data);
     if (this.state.data) {
       // console.log(this.state.data);
       return (

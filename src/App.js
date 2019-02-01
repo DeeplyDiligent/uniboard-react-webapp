@@ -9,7 +9,7 @@ import GetTheExtension from "./components/getTheExtension";
 import database from './data';
 
 class App extends Component {
-  state = { databaseID: null };
+  state = { database: "loading" };
   constructor(props) {
     super(props);
     
@@ -47,7 +47,9 @@ class App extends Component {
         return <GetTheExtension /> // TODO handle this case
     }*/ else {
       return <div className="loader">Loading...</div>;
-    }
+    } /*else {
+      return <GetTheExtension />;
+    }*/
   }
 }
 
