@@ -10,18 +10,8 @@ import {
 } from "react-device-detect";
 
 class Home extends Component {
-  state = {
-    data: ""
-  };
   constructor(props) {
     super(props);
-    this.props.db.get().then(this.storeData);
-  }
-
-  storeData = (doc) => {
-    if (doc.exists) {
-      this.setState({ data: doc.data() });
-    }
   }
 
   componentDidUpdate() {
@@ -30,8 +20,7 @@ class Home extends Component {
   }
 
   render() {
-    console.log(this.state.data);
-    if (this.state.data) {
+    if (this.props.data) {
       // console.log(this.state.data);
       return (
         <div className="h-full bg-grey-lightest ">
@@ -43,7 +32,7 @@ class Home extends Component {
             <div />
             <div />
           </div>
-          <UnitBoards database={this.state.data} />
+          <UnitBoards data={this.props.data} />
         </div>
       );
     } else {

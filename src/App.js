@@ -36,7 +36,7 @@ class App extends Component {
               <Switch>
                 <Route
                   path="/*"
-                  render={props => <Home db={this.state.data} {...props} />}
+                  render={props => <Home data={this.state.data} {...props} />}
                 />
               </Switch>
             </div>
