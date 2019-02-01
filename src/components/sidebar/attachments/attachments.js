@@ -10,10 +10,12 @@ class Attachments extends Component {
             <React.Fragment>
                 <div className="my-10 inline-flex text-lg w-full">
                     <i className="fas fa-paperclip"></i>
-                    <div className="px-3 font-bold">ATTACHMENTS</div>
+                    <div className="px-3 font-bold">{this.props.heading}</div>
                     <div className="w-full text-right">5</div>
                 </div>
-                {Array(5).fill(1).map((i,j)=><Attachment key={j}/>)}
+                {this.props.attachments.map((attachment, i) =>{
+                    return <Attachment key={i} name={attachment.name} url={attachment.url}/>
+                })}
             </React.Fragment>
         );
     }

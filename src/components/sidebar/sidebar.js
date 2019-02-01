@@ -19,11 +19,12 @@ class Sidebar extends Component {
     render() {
         
         // console.log(this.db.collection('dba').doc('eGlJZRO3B
-        console.log(this.props.data)
+        let weekData = this.props.data[this.props.match.params.id][this.props.match.params.branchid];
+        console.log(weekData);
         const styles = {}   
         styles.sidebar = {right:0, zIndex:'1000', overflow:'scroll'}
         styles.sidebarBackground = {rgba:'(0,0,0,0)'}
-        if(this.props.data){
+        if(weekData){
             return (
                 <div className="w-full h-full absolute" >
                 <Link to='/home'> 
@@ -38,7 +39,7 @@ class Sidebar extends Component {
                         {/* <div className="text">{this.props.match.params.id}</div> */}
                         <div className="bg-red-light brow my-4"></div>
                         <div className = "text-md text-grey">Week name and topic (if applicable)</div>
-                        <Attachments />
+                        <Attachments attachments={weekData.links} heading={"ATTACHMENTS"}/>
                         <hr/>
                         <TodoApp/>
                     </Box>

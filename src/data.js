@@ -31,6 +31,7 @@ class Database {
             for(const courseName in rawData){
                 const courseDict = rawData[courseName];
                 dict[courseName] = this._parseCourse(courseDict);
+                //dict[courseName]["unitCode"] = this.shortenName(courseName);
             }
             return dict;
         }
@@ -78,6 +79,14 @@ class Database {
 
     setAuthStateChangedCallback(callback){
         firebase.auth().onAuthStateChanged(callback);
+    }
+
+    shortenName(nameOfSubject){
+        var matches = nameOfSubject.match(/\w{3}\d{4}/g);
+        if (matches != null) {
+            nameOfSubject = matches[0];
+        }
+        return nameOfSubject
     }
 
 
