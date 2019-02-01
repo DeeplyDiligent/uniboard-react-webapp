@@ -16,11 +16,11 @@ class UnitBoard extends Component {
             className='flex-1 max-w-sm overflow-hidden shadow-lg m-2 bg-white border-b-8' >
                 <div className="flex justify-between content-center mt-2 px-6 py-4 bg-white border-b border-grey-light" >
                     <div className="flex1">
-                        <i class="text-2xl text-grey fab fa-flickr"></i>
+                        <i className="text-2xl text-grey fab fa-flickr"></i>
                         <span className=" text-3xl font-semibold ml-4">{this.shortenName(this.props.unitName)}</span>
                     </div>
                     <div className="flex1 mt-2">
-                        <i class="text-xl text-grey-dark fas fa-ellipsis-v"></i>
+                        <i className="text-xl text-grey-dark fas fa-ellipsis-v"></i>
                     </div>
                 </div>
             <div className="px-4 py-2" style={ {overflowY: 'scroll', height: 'calc(100% - 66px)'}}>
