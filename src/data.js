@@ -37,6 +37,21 @@ class Database {
         return false;   
     }
 
+    async createDataDictFromDatabaseId(databaseId){
+        console.log(databaseId)
+        let rawData = await this._getDictFromDatabaseId(databaseId);
+        if (rawData){
+            delete rawData['date'];
+            let dict = {};
+            for(const courseName in rawData){
+                const courseDict = rawData[courseName];
+                dict[courseName] = this._parseCourse(courseDict);
+            }
+            return dict;
+        }
+        return false;   
+    }
+
     async getDatabaseIdFromUserId(uid){
         let id = await this.db.collection("authidLinking").doc(uid).get();
         return id.data().databaseID;

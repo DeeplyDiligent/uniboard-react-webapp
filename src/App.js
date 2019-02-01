@@ -12,9 +12,14 @@ class App extends Component {
   state = { database: "loading" };
   constructor(props) {
     super(props);
-    
-    database.createDataDictFromUserId(this.props.uid).then(
-      x => {this.setState({data: x})})
+    console.log(this.props.match.params.id);
+    if(this.props.match.params.id){
+      database.createDataDictFromDatabaseId(this.props.match.params.id).then(
+        x => {this.setState({data: x})})
+    } else {
+      database.createDataDictFromUserId(this.props.uid).then(
+        x => {this.setState({data: x})})
+    }
   }
   render() {
     if(this.state.data){
