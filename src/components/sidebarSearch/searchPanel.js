@@ -3,7 +3,6 @@ import SearchCard from "./searchCard";
 import SearchBox from "./searchBox";
 import SearchResults from './searchResults';
 import database from "../../data";
-import * as JsSearch from "js-search";
 
 
 class SearchPanel extends React.Component {
