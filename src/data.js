@@ -1,5 +1,6 @@
 import firebase from "firebase";
 import he from 'he';
+import { transform } from "lodash";
 
 class Database {
 
@@ -63,6 +64,20 @@ class Database {
         return id.data().databaseID;
     }
 
+    transformToFlatDict(data){
+        let dataArray = [];
+        transform(data, (_, value, key) => {
+            let subject = key;
+            transform(value, (_, value, key) =>
+                value.links.map((value, key) => {
+                value["subject"] = subject;
+                dataArray.push(value)
+                })
+            );
+        });
+        return dataArray
+    }
+
     _parseCourse(courseDict){
         let weeks = {};
         for(const id in courseDict){
@@ -86,7 +101,8 @@ class Database {
             'name': he.decode(linkDict['text']),
             'url': linkDict['link'],
             'type': 'link',
-            'linktype': he.decode(linkDict['imgAlt']) // use alt-text
+            'linktype': he.decode(linkDict['imgAlt']), // use alt-text
+            'iconLink': linkDict['img']
         }
         return dict;
     }

@@ -6,6 +6,8 @@
     "firebase": "^5.7.2",
     "firebaseui": "^3.5.1",
     "he": "^1.2.0",
+    "js-search": "^1.4.2",
+    "lodash": "^4.17.11",
     "react": "^16.7.0",
     "react-device-detect": "^1.6.1",
     "react-dom": "^16.7.0",
