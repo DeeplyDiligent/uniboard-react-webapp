@@ -1,31 +1,33 @@
 import React, { Component } from "react";
-import SearchCard from './searchCard';
+import SearchCard from "./searchCard";
 import database from "../../data";
-import * as JsSearch from "js-search";
+import Fuse from "fuse.js";
 
 class SearchResults extends Component {
   state = {};
+  componentWillMount() {}
+
   render() {
-    let libraries = database.transformToFlatDict(this.props.data),
-    searchString = this.props.searchString.trim().toLowerCase();
-    let search = new JsSearch.Search("url");
-    search.tokenizer = {
-      tokenize(text) {
-        var regexStr = text.match(/[a-z]+|[^a-z]+/gi);
-        return regexStr;
-      }
+    let allData = database.transformToFlatDict(this.props.data),
+      searchString = this.props.searchString.trim().toLowerCase();
+    console.log(allData);
+    var options = {
+      shouldSort: true,
+      threshold: 0.6,
+      location: 0,
+      distance: 100,
+      maxPatternLength: 32,
+      minMatchCharLength: 1,
+      keys: ["name", "subject", "linktype"]
     };
-    search.addIndex("linktype");
-    search.addIndex("subject");
-    search.addIndex("name");
-    search.addDocuments(libraries);
+    var fuse = new Fuse(allData, options); // "list" is the item array
 
     if (searchString.length > 0) {
-      libraries = search.search(searchString);
+      allData = fuse.search(searchString);
     }
     return (
       <div className="w-full flex-grow">
-        {libraries.map((i, j) => (
+        {allData.map((i, j) => (
           <SearchCard
             key={j}
             link={i.url}
