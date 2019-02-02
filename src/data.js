@@ -101,7 +101,7 @@ class Database {
             'name': he.decode(linkDict['text']),
             'url': linkDict['link'],
             'type': 'link',
-            'linktype': he.decode(linkDict['imgAlt']), // use alt-text
+            'linktype': linkDict['imgAlt'], // use alt-text
             'iconLink': linkDict['img']
         }
         return dict;
