@@ -92,8 +92,8 @@ class Database {
                     'assignments':items.filter(x => x.linktype === 'Assignment'),
                     'quizzes':items.filter(x => x.linktype === 'Quiz'),
                     'forums':items.filter(x => x.linktype === 'Forum'),
-                    'links': items.filter(x => !(x.linktype in 
-                        ['File', 'Folder', 'Quiz', 'Assignment', 'Forum'])),
+                    'links': items.filter(x => !( ['File', 'Folder', 'Quiz', 'Assignment', 'Forum']
+                        .includes(x.linktype))),
                     'type': 'week'
                 };
 

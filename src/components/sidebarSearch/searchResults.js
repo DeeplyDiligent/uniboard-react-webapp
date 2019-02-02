@@ -5,14 +5,11 @@ import Fuse from "fuse.js";
 
 class SearchResults extends Component {
   state = {};
-  componentWillMount() {}
-
-  render() {
-    let allData = database.transformToFlatDict(this.props.data),
-      searchString = this.props.searchString.trim().toLowerCase();
-    console.log(allData);
+  componentWillMount() {
+    this.allData = database.transformToFlatDict(this.props.data);
     var options = {
       shouldSort: true,
+      tokenize: true,
       threshold: 0.6,
       location: 0,
       distance: 100,
@@ -20,14 +17,20 @@ class SearchResults extends Component {
       minMatchCharLength: 1,
       keys: ["name", "subject", "linktype"]
     };
-    var fuse = new Fuse(allData, options); // "list" is the item array
+    this.fuse = new Fuse(this.allData, options);
+  }
 
+  render() {
+    let searchString = this.props.searchString.trim().toLowerCase();
+    
     if (searchString.length > 0) {
-      allData = fuse.search(searchString);
+      this.allData = this.fuse.search(searchString);
     }
+    let SearchResultsClasses = {};
+    SearchResultsClasses.maxWidth = this.props.maxWidth?this.props.maxWidth:'';
     return (
-      <div className="w-full flex-grow">
-        {allData.map((i, j) => (
+      <div className={`flex-grow overflow-scroll ${SearchResultsClasses.maxWidth} mt-2`}>
+        {this.allData.map((i, j) => (
           <SearchCard
             key={j}
             link={i.url}

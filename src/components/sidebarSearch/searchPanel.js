@@ -18,7 +18,7 @@ class SearchPanel extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="flex flex-col">
         <SearchBox handleChange={this.handleChange} />
         <SearchResults data={this.props.data} searchString = {this.state.searchString} />
       </div>

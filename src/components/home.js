@@ -3,7 +3,7 @@ import UnitBoards from "./unitBoard/unitBoards";
 import SearchBox from "./sidebarSearch/searchBox";
 import { isMobileOnly } from "react-device-detect";
 import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
-import SearchResults from './sidebarSearch/searchResults'
+import SearchResults from "./sidebarSearch/searchResults";
 
 class Home extends Component {
   state = { searchString: "" };
@@ -28,16 +28,15 @@ class Home extends Component {
           >
             <SearchBox handleChange={this.handleChange} />
           </div>
-          <Switch>
-            <Route
-              exact
-              path={`/search`}
-              render={() => <SearchResults data={this.props.data} searchString = {this.state.searchString} />}
+          {this.state.searchString ? (
+            <SearchResults
+              data={this.props.data}
+              searchString={this.state.searchString}
+              maxWidth={"max-w-md mx-auto"}
             />
-            <Route
-              render={() => <UnitBoards data={this.props.data} />}
-            />
-          </Switch>
+          ) : (
+            <UnitBoards data={this.props.data} />
+          )}
         </div>
       );
     } else {

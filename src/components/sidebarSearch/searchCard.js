@@ -7,7 +7,7 @@ class SearchCard extends React.Component {
     return (
       <a
         target="_blank"
-        className="w-full my-2 flex"
+        className="my-2 flex rounded overflow-hidden shadow m-2 p-2 bg-white"
         href={this.props.link}
         style={{
           color: "black",

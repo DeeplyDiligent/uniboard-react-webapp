@@ -4,7 +4,7 @@ class SearchBox extends Component {
   render() {
     return (
       <div
-        className="rounded-full shadow-inner bg-white sm:bg-grey-lightest p-4  flex"
+        className="rounded-full shadow-inner bg-white sm:bg-grey-lightest p-4  flex flex-no-shrink"
         style={{ display1: "-webkit-fill-available" }}
       >
         <i className="fas fa-search mr-4" />
