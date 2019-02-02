@@ -83,10 +83,17 @@ class Database {
         for(const id in courseDict){
             const item = courseDict[id]
             if(id.startsWith('expandable')){
+                let items = item['children'].map(
+                    link_id => this.__parseLink(courseDict[link_id]))
                 let week = {
                     'name': he.decode(item['text']),
-                    'links': item['children'].map(
-                        link_id => this.__parseLink(courseDict[link_id])),
+                    'files':items.filter(x => x.linktype === 'File'),
+                    'folders':items.filter(x => x.linktype === 'Folder'),
+                    'assignments':items.filter(x => x.linktype === 'Assignment'),
+                    'quizzes':items.filter(x => x.linktype === 'Quiz'),
+                    'forums':items.filter(x => x.linktype === 'Forum'),
+                    'links': items.filter(x => !(x.linktype in 
+                        ['File', 'Folder', 'Quiz', 'Assignment', 'Forum'])),
                     'type': 'week'
                 };
 
