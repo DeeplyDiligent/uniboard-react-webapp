@@ -9,13 +9,18 @@ import GetTheExtension from "./components/getTheExtension";
 import database from "./data";
 
 class App extends Component {
-  state = { database: "loading" };
+  state = { loading: true, notFound: false };
   constructor(props) {
     super(props);
     database.createRealtimeDataDictFromDatabaseId(this.props.uid).then(db => {
-      db.onUpdate(x => {
-        this.setState({ data: x });
-      });
+      db.onUpdate(
+        data => {
+          this.setState({ data: data, loading: false });
+        },
+        () => {
+          this.setState({ notFound: true, loading: false });
+        }
+      );
     });
   }
   render() {
@@ -23,7 +28,7 @@ class App extends Component {
       console.log(this.state.data);
       return (
         <Router>
-          <div className="App overflow-hidden">
+          <div className="App flex flex-col">
             <Route
               path="/home/sidebar/:id/:branchid"
               render={props => <Sidebar data={this.state.data} {...props} />}
@@ -36,24 +41,17 @@ class App extends Component {
             />
             <Navbar loggedIn={true} />
 
-            <div className="mainComponent">
-              <Switch>
-                <Route
-                  path="/*"
-                  render={props => <Home data={this.state.data} {...props} />}
-                />
-              </Switch>
-            </div>
+            <Home data={this.state.data} />
           </div>
         </Router>
       );
-    } /*else if (this.state.databaseID === "user not found") {
-        return <GetTheExtension /> // TODO handle this case
-    }*/ else {
+    } else if (this.state.loading) {
       return <div className="loader">Loading...</div>;
-    } /*else {
+    } else if (this.state.notFound) {
       return <GetTheExtension />;
-    }*/
+    } else {
+      return false;
+    }
   }
 }
 

@@ -43,7 +43,7 @@ class Database {
         return this;
     }
 
-    onUpdate(func){
+    onUpdate(func,noData){
         this.databaseRef.onSnapshot((doc)=>{
             let rawData = doc.data()
             if (rawData){
@@ -54,6 +54,8 @@ class Database {
                     dict[courseName] = this._parseCourse(courseDict);
                 }
                 func(dict);
+            }else{
+                noData();
             }
         })
 

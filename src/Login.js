@@ -7,14 +7,14 @@ import RegisterUser from "./components/registerUser";
 import firebase from "firebase";
 import App from "./App";
 import LoginWithMonash from "./components/loginWithMonash";
-import database from './data.js'
+import database from "./data.js";
 
 class Login extends Component {
   state = {
     database: {}
   };
   constructor(props) {
-    super(props); 
+    super(props);
     this.state.loggedIn = "not-checked";
     database.setAuthStateChangedCallback(this.changeAuthState);
   }
@@ -29,33 +29,17 @@ class Login extends Component {
 
   render() {
     if (
-      this.state.loggedIn === true 
-      // && this.state.email.includes("student.monash.edu")
+      this.state.loggedIn === true &&
+      this.state.email.includes("student.monash.edu")
     ) {
-      return (
-        <Router>
-          <Switch>
-            <Route
-              path="/app/user/:id"
-              render={props => (
-                <App uid={this.state.email} {...props} />
-              )}
-            />
-            <Route
-              path="/*"
-              render={props => (
-                <App uid={this.state.email} {...props} />
-              )}
-            />
-          </Switch>
-        </Router>
-      );
+      return <App uid={this.state.email} />;
     } else if (this.state.loggedIn === "not-checked") {
       return <div className="loader">Loading...</div>;
-    } else if (this.state.loggedIn === true && !this.state.email.includes("student.monash.edu")) {
-      return (
-        <LoginWithMonash />
-      );
+    } else if (
+      this.state.loggedIn === true &&
+      !this.state.email.includes("student.monash.edu")
+    ) {
+      return <LoginWithMonash />;
     } else {
       return (
         <React.Fragment>
