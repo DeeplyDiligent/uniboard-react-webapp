@@ -12,7 +12,7 @@ class Attachment extends Component {
           <a className=" w-1/6 pr-2 text-right" href={this.props.url} target="_blank"><i className="fas fa-cloud-download-alt"></i></a>
 
         </div>
-        <hr style={{borderWidth:'1px'}}/>
+        <hr className="bg-grey-light" style={{height:"1px"}}/>
       </React.Fragment>
     );
   }
