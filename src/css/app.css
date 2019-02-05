@@ -38,8 +38,6 @@ body{
 
 .loader{
     text-align: center;
-    /* height: 100%; */
-    font-size: 85px;
     width: 100%;
     top: 42%;
     position: absolute;

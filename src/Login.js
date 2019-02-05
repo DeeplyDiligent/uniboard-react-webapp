@@ -4,10 +4,10 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 // import { BrowserRouter as Router, Route, Link, Switch, Redirect } from 'react-router-dom';
 import Navbar from "./components/nav/navbar";
 import RegisterUser from "./components/registerUser";
-import firebase from "firebase";
 import App from "./App";
 import LoginWithMonash from "./components/loginWithMonash";
 import database from "./data.js";
+import About from "./components/about";
 
 class Login extends Component {
   state = {
@@ -34,7 +34,7 @@ class Login extends Component {
     ) {
       return <App uid={this.state.email} />;
     } else if (this.state.loggedIn === "not-checked") {
-      return <div className="loader">Loading...</div>;
+      return <div className="loader text-5xl">Loading...</div>;
     } else if (
       this.state.loggedIn === true &&
       !this.state.email.includes("student.monash.edu")
@@ -42,12 +42,28 @@ class Login extends Component {
       return <LoginWithMonash />;
     } else {
       return (
-        <React.Fragment>
-          <Router>
-            <Navbar loggedIn={false} />
-          </Router>
-          <RegisterUser />
-        </React.Fragment>
+        <Router>
+          <Switch>
+            <Route
+              exact
+              path="/login"
+              render={() => (
+                <React.Fragment>
+                  <Navbar loggedIn={false} />
+                  <RegisterUser />
+                </React.Fragment>
+              )}
+            />
+            <Route
+              render={() => (
+                <React.Fragment>
+                  <Navbar loggedIn={false} />
+                  <About />
+                </React.Fragment>
+              )}
+            />
+          </Switch>
+        </Router>
       );
     }
   }
